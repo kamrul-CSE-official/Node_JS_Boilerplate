@@ -59,4 +59,23 @@ router
    */
   .post(usersControlers.saveAUser);
 
+router
+  .route("/update/:id")
+  /**
+   * @api {get} /tools All tools
+   * @apiDescription Get all the tools
+   * @apiPermission admin
+   *
+   * @apiMeader {string} Authoriztion
+   *
+   * @apiParam {Number{1}}    [page=1]    List page
+   * @apiParam {Number{1-100}}    [limit-10]  users per page
+   *
+   * @apiSuccess {Object{}} all the tools
+   *
+   * @apiError {Unauthorized 401} unauthorized only authenticated users can access the data
+   * @ApiErrror {Forbidden 403}   Forbidden   only admins can access the data
+   */
+  .patch(usersControlers.updateAUser);
+
 module.exports = router;

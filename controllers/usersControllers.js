@@ -18,3 +18,20 @@ module.exports.saveAUser = (req, res) => {
   database.push(req.body);
   res.send(database);
 };
+
+module.exports.updateAUser = (req, res) => {
+  // const newData = req.body;
+  const { id } = req.params;
+  const filter = { _id: id };
+
+  const newData = database.find((user) => user.id === Number(id));
+
+  newData.id = id;
+  newData.gender = req.gender;
+  newData.name = req.body.name;
+  newData.contact = req.body.contact;
+  newData.address = req.body.address;
+  newData.photoUrl = req.body.photoUrl;
+
+  res.send(newData);
+};
