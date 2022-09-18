@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { dbConnection } = require("./utils/dbConnection");
 const usersRouters = require("./routers/v1/users.router");
+const errorHandler = require("./middleware/errorHandler");
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -19,6 +20,8 @@ app.use("/user", usersRouters);
 app.all("*", (req, res) => {
   res.send("No Router Found...");
 });
+
+app.use(errorHandler);
 
 //Listening On
 app.listen(port, () => {
